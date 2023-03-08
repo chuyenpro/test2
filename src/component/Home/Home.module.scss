@@ -1,0 +1,41 @@
+.wrapper{
+    margin: 20px 20%;
+}
+.random{
+    position: absolute;
+    top:2rem;
+    right: 20%;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    width: 6rem;
+    height: 3.3rem;
+
+}
+.content{
+    margin-top: 20%;
+}
+.text{
+    padding-left: 20px;
+    border-left:3px solid sandybrown ;
+    margin-bottom: 30px ;
+}
+.author{
+    margin-top: 20px;
+    &{
+        font-size: 10px;
+        padding-left:20px ;
+    }
+}   
+.author-btn{
+    color: rgb(20, 20, 20);
+    text-decoration: none;
+    background-color: transparent;
+    width: 10rem;
+    height: 3rem;
+    border: none;
+    font-weight: 600;
+    font-size: 15px;
+}
