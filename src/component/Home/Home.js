@@ -13,6 +13,9 @@ const Home = () => {
   const [random, setRandom] = useState(0);
   const [author, setAuthor] = useState([]);
   const [showAuthor, setShowAuthor] = useState(false);
+  const [authorQuotes, setAuthorQuotes] = useState([]);
+
+  const [showAuthorQuotes, setShowAuthorQuotes] = useState(false);
 
   useEffect(() => {
     fetch("https://api.quotable.io/quotes")
@@ -25,6 +28,7 @@ const Home = () => {
 
   const handleRandom = () => {
     setRandom(Math.floor(Math.random() * indexRandom.length));
+    setShowAuthorQuotes(false);
 
     fetch("https://api.quotable.io/quotes")
       .then((res) => res.json())
@@ -34,9 +38,6 @@ const Home = () => {
       });
   };
 
-  const [authorQuotes, setAuthorQuotes] = useState([]);
-
-  const [showAuthorQuotes, setShowAuthorQuotes] = useState(false);
 
   const handleAuthorQuotes = (author) => {
     setShowAuthorQuotes(true);
