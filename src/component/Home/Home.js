@@ -4,15 +4,15 @@ import styles from "./Home.module.scss";
 
 import { Routes, Route, Link } from "react-router-dom";
 import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
-import {GrFormNextLink} from 'react-icons/gr'
+import { GrFormNextLink } from "react-icons/gr";
 
 const cx = classNames.bind(styles);
 const Home = () => {
   const [showQuotes, setShowQuotes] = useState([]);
   const [indexRandom, setIndexRandom] = useState([]);
   const [random, setRandom] = useState(0);
-  const [author, setAuthor]= useState([])
-  const [showAuthor, setShowAuthor]=useState(false)
+  const [author, setAuthor] = useState([]);
+  const [showAuthor, setShowAuthor] = useState(false);
 
   useEffect(() => {
     fetch("https://api.quotable.io/quotes")
@@ -56,27 +56,41 @@ const Home = () => {
 
         <div className={cx("content")}>
           <p className={cx("text")}>{showQuotes.content}</p>
-          <div className={cx("author")}>
-            <button className={cx("author-btn")} onClick={()=>handleAuthorQuotes(showQuotes.author)}>{showQuotes.author}
-            <GrFormNextLink className={cx('icon')}/></button>  
-            <p>{showQuotes.tags}</p>
-          </div>
-
-          <ul>
-          {authorQuotes.map((quote) => (
-            <li style={{
-              listStyle:'none'
-            }} key={quote._id}>
-              <h3>{quote.author}</h3>
-              <h4 style={{
-                paddingLeft: '20px',
-                borderLeft:'3px solid sandybrown ',
-                marginBottom: '30px' 
-              }}>{quote.content}</h4>
-              <h5>{quote.tags}</h5>
-            </li>
-          ))}
-        </ul>
+          {!showAuthorQuotes ? (
+            <div className={cx("author")}>
+              <button
+                className={cx("author-btn")}
+                onClick={() => handleAuthorQuotes(showQuotes.author)}
+              >
+                {showQuotes.author}
+                <GrFormNextLink className={cx("icon")} />
+              </button>
+              <p>{showQuotes.tags}</p>
+            </div>
+          ) : (
+            <ul>
+              {authorQuotes.map((quote) => (
+                <li
+                  style={{
+                    listStyle: "none",
+                  }}
+                  key={quote._id}
+                >
+                  <h3>{quote.author}</h3>
+                  <h4
+                    style={{
+                      paddingLeft: "20px",
+                      borderLeft: "3px solid sandybrown ",
+                      marginBottom: "30px",
+                    }}
+                  >
+                    {quote.content}
+                  </h4>
+                  <h5>{quote.tags}</h5>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </>
